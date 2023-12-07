@@ -1,9 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+import HomePage from "./pages/HomePage/HomePage";
+import CatalogPage from "./pages/CatalogPage/CatalogPage";
+import Favorite from "./pages/FavoritePage/Favorite";
 
 function App() {
   return (
-    <div className="App">
+    <Routes>
+      <Route path="/">
+        <Route index element={<HomePage />} />
+        <Route path="/catalog" element={<CatalogPage />} />
+        <Route path="/favorite" element={<Favorite />} />
+        <Route path="*" element={<HomePage />} />
+      </Route>
+    </Routes>
+  );
+}
+
+export default App;
+
+/* <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -18,8 +35,4 @@ function App() {
           Learn React
         </a>
       </header>
-    </div>
-  );
-}
-
-export default App;
+    </div> */
