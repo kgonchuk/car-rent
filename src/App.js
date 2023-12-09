@@ -2,13 +2,14 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import HomePage from "./pages/HomePage/HomePage";
-import CatalogPage from "./pages/CatalogPage/CatalogPage";
+import CatalogPage from "./pages/CatalogPage/CatalogPage.jsx";
 import Favorite from "./pages/FavoritePage/Favorite";
+import SharedLayout from "./components/SharedLayout/SharedLayout";
 
 function App() {
   return (
     <Routes>
-      <Route path="/">
+      <Route path="/" element={<SharedLayout />}>
         <Route index element={<HomePage />} />
         <Route path="/catalog" element={<CatalogPage />} />
         <Route path="/favorite" element={<Favorite />} />

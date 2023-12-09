@@ -5,6 +5,14 @@ import storage from "redux-persist/lib/storage";
 import { carsReducer } from "./carSlice";
 import { favoriteReducer } from "./favoriteSlice";
 import { filterReducer } from "./filterSlice";
+import {
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
 
 const persistConfig = {
   key: "favotite",
@@ -17,5 +25,11 @@ export const store = configureStore({
     filter: filterReducer,
     favorite: persistedFavoriteReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 export const persistor = persistStore(store);
