@@ -1,11 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import persistReducer from "redux-persist/es/persistReducer";
-import persistStore from "redux-persist/es/persistStore";
-import storage from "redux-persist/lib/storage";
-import { carsReducer } from "./carSlice";
-import { favoriteReducer } from "./favoriteSlice";
-import { filterReducer } from "./filterSlice";
 import {
+  persistStore,
+  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -13,23 +9,36 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import favoriteReducer from "./favoriteSlice";
+import catalogReducer from "./carSlice";
+import filtersReducer from "./filterSlice";
 
-const persistConfig = {
-  key: "favotite",
+const favoritePersistConfig = {
+  key: "favorites",
   storage,
+  whitelist: ["favorites"],
 };
-const persistedFavoriteReducer = persistReducer(persistConfig, favoriteReducer);
+
+const persistedUserReducer = persistReducer(
+  favoritePersistConfig,
+  favoriteReducer
+);
+
 export const store = configureStore({
   reducer: {
-    cars: carsReducer,
-    filter: filterReducer,
-    favorite: persistedFavoriteReducer,
+    favorite: persistedUserReducer,
+    catalog: catalogReducer,
+    filters: filtersReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        ignoredPaths: ["transactions.date"],
       },
     }),
+  devTools: process.env.NODE_ENV === "development",
 });
+
 export const persistor = persistStore(store);

@@ -1,0 +1,123 @@
+.wrapper_header {
+  display: flex;
+  align-items: center;
+  /* width: 100%; */
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--pr-background-color);
+}
+.div_nav {
+  margin-left: auto;
+}
+.logo_header {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.header_list {
+  display: flex;
+  align-items: center;
+}
+
+.nav_header .header_item {
+  display: flex;
+  /* flex-wrap: wrap; */
+  border-radius: 3px;
+  border: none;
+  text-align: center;
+  padding: 4px 4px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  transition: 0.5s;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+}
+.header_item:hover {
+  color: var(--pr-text-color);
+  background-color: var(--pr-background-color);
+}
+
+.header_item:not(:last-child) {
+  margin-right: 15px;
+}
+
+/* gragient logo */
+.wrap {
+  width: 100%;
+}
+.gradient_text {
+  font-family: inherit;
+  background: linear-gradient(to right, crimson, pink, springgreen);
+  background-size: 200% 200%;
+  animation: rainbow 2s ease-in-out infinite;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: var(--pr-background-color);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  transition: color 0.2s ease-in-out;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+.gradient_text:hover {
+  color: rgba(0, 0, 0, 0);
+}
+@keyframes rainbow {
+  0% {
+    background-position: left;
+  }
+  50% {
+    background-position: right;
+  }
+  100% {
+    background-position: left;
+  }
+}
+
+/* -----------MEDIA TABLET----------------- */
+
+@media (min-width: 834px) {
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
+  .gradient_text {
+    font-size: 14px;
+  }
+  .nav_header .header_item {
+    display: flex;
+    justify-content: flex-end;
+    gap: 30px;
+    font-size: 14px;
+    padding: 6px 6px;
+  }
+}
+@media (min-width: 1234px) {
+  .wrapper_header {
+    display: flex;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
+  .gradient_text {
+    margin-right: 150px;
+    font-size: 16px;
+  }
+  .nav_header .header_item {
+    font-size: 16dpx;
+    padding: 6px 6px;
+  }
+}

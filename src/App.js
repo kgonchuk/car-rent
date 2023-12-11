@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import HomePage from "./pages/HomePage/HomePage";
 import CatalogPage from "./pages/CatalogPage/CatalogPage.jsx";
-import Favorite from "./pages/FavoritePage/Favorite";
+import FavoritePage from "./pages/FavoritePage/FavoritePage.jsx";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<HomePage />} />
         <Route path="/catalog" element={<CatalogPage />} />
-        <Route path="/favorite" element={<Favorite />} />
+        <Route path="/favorite" element={<FavoritePage />} />
         <Route path="*" element={<HomePage />} />
       </Route>
     </Routes>

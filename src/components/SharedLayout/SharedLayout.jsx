@@ -1,16 +1,45 @@
-import React, { Suspense } from "react";
-import Header from "../Header/Header";
-import { Outlet } from "react-router-dom";
+// import React, { Suspense } from "react";
+// import Header from "../Header/Header";
+// import { Outlet } from "react-router-dom";
 
-const SharedLayout = () => {
+// const SharedLayout = () => {
+//   return (
+//     <>
+//       <Header />
+
+//       <Suspense>
+//         <Outlet />
+//       </Suspense>
+//     </>
+//   );
+// };
+// export default SharedLayout;
+
+import React from "react";
+import Container from "../Container/Container";
+import Header from "../../pages/Header/Header";
+import { Outlet } from "react-router-dom";
+import { Suspense } from "react";
+import css from "./SharedLayout.module.css";
+import LoaderSpiner from "../LoaderSpiner/LoaderSpiner";
+
+const Layout = () => {
   return (
     <>
-      <Header />
-
-      <Suspense>
-        <Outlet />
-      </Suspense>
+      <header className={css.background}>
+        <Container>
+          <Header />
+        </Container>
+      </header>
+      <Container>
+        <main>
+          <Suspense fallback={<LoaderSpiner />}>
+            <Outlet />
+          </Suspense>
+        </main>
+      </Container>
     </>
   );
 };
-export default SharedLayout;
+
+export default Layout;

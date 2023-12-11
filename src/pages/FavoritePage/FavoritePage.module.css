@@ -1,0 +1,7 @@
+.form_wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.select_wrapper_form {
+  width: 938px;
+}

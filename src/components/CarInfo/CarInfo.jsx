@@ -1,37 +1,74 @@
 import React from "react";
-const CarInfo = ({ advert, toggleModal }) => {
+
+import icon from "../../assets/images/icon.svg";
+
+const CarInfo = ({
+  onClick,
+  id,
+  year,
+  make,
+  model,
+  type,
+  image,
+  description,
+  fuelConsumption,
+  engineSize,
+  accessories,
+  functionalities,
+  rentalPrice,
+  rentalCompany,
+  address,
+  rentalConditions,
+  mileage,
+}) => {
   return (
     <div>
-      <img src={advert.img} alt={advert.model} />
+      <img src={image} alt={model} />
+
       <div>
-        <p>{advert.make}</p>
-        <p>{advert.model},</p>
-        <p>{advert.year}</p>
+        <p>{make}</p>
+        <p>{model},</p>
+        <p>{year}</p>
       </div>
 
       <div>
-        <span>{advert.address}</span>
-        <span>{advert.id}</span>
-        <span>{advert.year}</span>
-        <span>Type:{advert.type}</span>
-        <span>Fuel Consumption:{advert.fuelConsumption}</span>
-        <span>Engine Size:{advert.engineSize}</span>
-        <span>{advert.address}</span>
+        <span>{address}</span>
+        <svg>
+          <use href={`${icon}#icon-Vector-4`} />
+        </svg>
+        <span>Id: {id}</span>
+        <svg>
+          <use href={`${icon}#icon-Vector-4`} />
+        </svg>
+        <span>Year: {year}</span>
+        <svg>
+          <use href={`${icon}#icon-Vector-4`} />
+        </svg>
+        <span>Type: {type}</span>
+        <svg>
+          <use href={`${icon}#icon-Vector-4`} />
+        </svg>
+        <span>Fuel Consumption: {fuelConsumption}</span>
+        <svg>
+          <use href={`${icon}#icon-Vector-4`} />
+        </svg>
+        <span>Engine size: {engineSize}</span>
       </div>
-      <p>{advert.description}</p>
+      <p>{description}</p>
       <p>Accessories and functionalities:</p>
       <div>
-        <span>{advert.accessories}</span>
-        <span>{advert.functionalities}</span>
+        <span>{accessories}</span>
+        <span>{functionalities}</span>
       </div>
       <p>Rental Conditions:</p>
       <div>
-        <p>Minimum age : {advert.rentalConditions}</p>
-        <p>Mileage: {advert.mileage}</p>
-        <p>Price: {advert.rentalPrice}</p>
+        <p>Minimum age: {rentalConditions}</p>
+        <p>Mileage: {mileage}</p>
+        <p>Price: {rentalPrice}</p>
       </div>
       <a href="tel:+380730000000">Rental car</a>
     </div>
   );
 };
+
 export default CarInfo;

@@ -1,22 +1,23 @@
-import { useDispatch } from "react-redux";
-import { CarList } from "../../components/CarList/CarList";
-import { useEffect } from "react";
-import { fetchCars } from "../../redux/operation";
+import CarList from "../../components/CarList/CarList";
+import Filter from "../../components/Filter/Filter";
+import { useSelector, useDispatch } from "react-redux";
+import { setFilters } from "../../redux/filterSlice";
+import { selectAdverts } from "../../redux/selector";
 
-//
 const CatalogPage = () => {
   const dispatch = useDispatch();
+  const adverts = useSelector(selectAdverts);
 
-  useEffect(() => {
-    dispatch(fetchCars());
-  }, [dispatch]);
+  const handleFilterChange = (filters) => {
+    dispatch(setFilters(filters));
+  };
 
   return (
     <div>
-      <title>Contacts</title>
-
+      <Filter adverts={adverts} onFilterChange={handleFilterChange} />
       <CarList />
     </div>
   );
 };
+
 export default CatalogPage;
