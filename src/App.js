@@ -1,15 +1,17 @@
 // import logo from './logo.svg';
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import HomePage from "./pages/HomePage/HomePage";
-import CatalogPage from "./pages/CatalogPage/CatalogPage.jsx";
-import FavoritePage from "./pages/FavoritePage/FavoritePage.jsx";
-import SharedLayout from "./components/SharedLayout/SharedLayout";
+import { lazy } from "react";
+import Layout from "./components/SharedLayout/SharedLayout";
+
+const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
+const CatalogPage = lazy(() => import("./pages/CatalogPage/CatalogPage"));
+const FavoritePage = lazy(() => import("./pages/FavoritePage/FavoritePage"));
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<SharedLayout />}>
+      <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="/catalog" element={<CatalogPage />} />
         <Route path="/favorite" element={<FavoritePage />} />

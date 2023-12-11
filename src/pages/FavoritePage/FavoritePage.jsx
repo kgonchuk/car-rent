@@ -1,60 +1,24 @@
-import React from "react";
+import { useSelector } from "react-redux";
+import { totalFavoritesCars } from "../../redux/selector";
+import { FavoritesList } from "../../components/FavoriteList/FavoriteList";
 
-import CarListItem from "../../components/CarListItem/CarListItem";
-import { useSelector, useDispatch } from "react-redux";
-import { setFiltersFavorite } from "../../redux/filterSlice";
-
-import FavoriteList from "../../components/FavoriteList/FavoriteList";
-import { filtersFavorite, selectFavorites } from "../../redux/selector";
-import css from "./FavoritePage.module.css";
-import css_ from "../../components/CarList/CarList.module.css";
-
-const FavouritePage = () => {
-  const dispatch = useDispatch();
-  const favorites = useSelector(selectFavorites);
-  const filters = useSelector(filtersFavorite);
-
-  const handleFilterChange = (filters) => {
-    dispatch(setFiltersFavorite(filters));
-  };
-
-  const filteredFavorites = favorites.filter((advert) => {
-    if (filters.selectedMake && advert.make !== filters.selectedMake) {
-      return false;
-    }
-    if (
-      filters.selectedPrice &&
-      parseInt(advert.rentalPrice.slice(1), 10) > Number(filters.selectedPrice)
-    ) {
-      return false;
-    }
-    if (filters.minMileage && advert.mileage < Number(filters.minMileage)) {
-      return false;
-    }
-    if (filters.maxMileage && advert.mileage > Number(filters.maxMileage)) {
-      return false;
-    }
-    return true;
-  });
+const Favorites = () => {
+  const totalCars = useSelector(totalFavoritesCars);
+  console.log(totalCars);
 
   return (
-    <form className={css.form_wrapper}>
-      <div className={css.select_wrapper_form}>
-        {filteredFavorites.length > 0 ? (
-          <div className={css_.advertsList}>
-            {filteredFavorites.map((advert) => (
-              <CarListItem key={advert.id} advert={advert} />
-            ))}
-          </div>
-        ) : (
-          <div className={css_.noMatching}>
-            Sorry, no matching favorites found
-          </div>
-        )}
-      </div>
-      <FavoriteList onFilterChange={handleFilterChange} />
-    </form>
+    <section className="pb-[100px] md:pt-[100px] md:max-w-[1280px] md:min-h-[calc(100vh-132px)] md:px-[16px] mx-auto">
+      {totalCars > 0 ? (
+        <FavoritesList />
+      ) : (
+        <div className="w-full h-full flex">
+          <h2 className="m-auto text-center text-2xl text-darkFontColor dark:text-white">
+            There are no cars in the Favorites List :(
+          </h2>
+        </div>
+      )}
+    </section>
   );
 };
 
-export default FavouritePage;
+export default Favorites;
