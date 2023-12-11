@@ -1,20 +1,3 @@
-// import React, { Suspense } from "react";
-// import Header from "../Header/Header";
-// import { Outlet } from "react-router-dom";
-
-// const SharedLayout = () => {
-//   return (
-//     <>
-//       <Header />
-
-//       <Suspense>
-//         <Outlet />
-//       </Suspense>
-//     </>
-//   );
-// };
-// export default SharedLayout;
-
 import React from "react";
 import Container from "../Container/Container";
 import Header from "../../pages/Header/Header";

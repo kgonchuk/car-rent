@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import makes from "../../helpers/make.json";
+import make from "../../helpers/make.json";
 import css from "./Filter.module.css";
 import SelectPrice from "../../helpers/SelectPrice/SelectPrice";
 import SelectBrand from "../../helpers/SelectBrand/SelectBrand";
@@ -56,7 +56,7 @@ const Filter = ({ onFilterChange }) => {
         <SelectBrand
           selectedMake={selectedMake}
           setSelectedMake={setSelectedMake}
-          makes={makes}
+          makes={make}
         />
       </div>
 

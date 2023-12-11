@@ -1,23 +1,3 @@
-// import { nanoid } from "nanoid";
-// import { CarListItem } from "../CarListItem/CarListItem";
-
-// export const CarList = ({ cars, onModalOpen }) => {
-//   return (
-//     <div>
-//       <ul>
-//         {cars.map((car) => {
-//           return (
-//             <CarListItem
-//               advert={car}
-//               onModalOpen={onModalOpen}
-//               key={nanoid()}
-//             />
-//           );
-//         })}
-//       </ul>
-//     </div>
-//   );
-// };
 import React, { useEffect, useState } from "react";
 import CarListItem from "../CarListItem/CarListItem";
 import LoadMore from "../../helpers/LoadMore/LoadMore";

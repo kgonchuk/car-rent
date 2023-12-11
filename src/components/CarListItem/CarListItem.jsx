@@ -1,28 +1,3 @@
-// export const CarListItem = ({ advert }) => {
-//   return (
-//     <div>
-//       <div>
-//         <img src={advert.img} alt={advert.model} />
-//       </div>
-//       <div>
-//         <p>{advert.make}</p>
-//         <p>{advert.model},</p>
-//         <p>{advert.year}</p>
-//         <p>{advert.rentalPrice}</p>
-//       </div>
-//       <div>
-//         <span>{advert.address}</span>
-//         <span>{advert.rentalCompany}</span>
-//         <span>Premium {advert.type}</span>
-//         <span>{advert.make}</span>
-//         <span>{advert.id}</span>
-//         <span>{advert.accessories}</span>
-//       </div>
-//       <button type="button">Learn more</button>
-//     </div>
-//   );
-// };
-
 import { useState } from "react";
 import Modal from "../Modal/Modal";
 import { useDispatch, useSelector } from "react-redux";

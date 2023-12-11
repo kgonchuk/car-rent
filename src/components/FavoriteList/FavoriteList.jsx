@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import makes from "../../helpers/make.json";
 import css from "./FavoriteList.module.css";
-import MySelectFav from "../../helpers/SelectFavorite/SelectFavorite";
+import SelectFavorite from "../../helpers/SelectFavorite/SelectFavorite";
 import MySelectMakeFav from "../../helpers/SelectBrandFavorite/SelectBrandFavorite";
 import { useDispatch, useSelector } from "react-redux";
 import { filtersFavorite } from "../../redux/selector";
@@ -44,7 +44,6 @@ const FavoriteList = ({ onFilterChange }) => {
 
   const clearFilters = (e) => {
     e.preventDefault();
-    console.log("clear");
     dispatch(resetFiltersFavorite());
   };
 
@@ -62,7 +61,7 @@ const FavoriteList = ({ onFilterChange }) => {
         <div className={css.select_wrapper}>
           <ladel className={css.lable_title}>Price/ 1 hour</ladel>
 
-          <MySelectFav
+          <SelectFavorite
             selectedPrice={selectedPrice}
             setSelectedPrice={setSelectedPrice}
           />
